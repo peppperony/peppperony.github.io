@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        (function (p, a, y, b, o, x) {
+            o = p.createElement(a);
+            x = p.getElementsByTagName(a)[0];
+            o.async = 1;
+            o.src = 'https://widget.paybox.money/v1/staging/pbwidget.js?d=9.09.2022 14:24:51'
+            x.parentNode.insertBefore(o, x);
+        })(document, 'script');
+    </script>
+    <script src="https://api.paybox.money/client_script.js"></script>
+</head>
+<body>
+    <button onclick="pay(100)">Оплатить</button>
+ <script>
+          function pay(amount) {
+            var data = {
+                token: "Tf9LkZjbwD8XW17yAHqOp6eZkQ60zhAQ",
+                payment: {
+                    order: "07121312",
+                    amount: "1",
+                    currency: "RUB",
+                    description: "Тест виджет",
+                    param1: "string",
+                    param2: "string",
+                    param3: "string",
+                    options: {
+                        callbacks: {
+                            result_url: "https://my-domain.com/result",
+                            check_url: "https://my-domain.com/check"
+                        },
+                        custom_params: {},
+                        user: {
+                            ip: "192.168.1.1",
+                            email: "testmarket.paybox@mail.ru",
+                            phone: "89779886035",
+                        }
+                    }
+                },
+                successCallback: function (payment) {
+                    //...
+                },
+                errorCallback: function (payment) {
+                    //...
+                }
+            }
+
+            var paybox = new PayBox(data);
+            paybox.create();
+        }
+    </script>
+</body>
+</html>
